@@ -28,7 +28,7 @@ drupal_major_version: 8
 drupal_domain: "{{ vagrant_hostname }}"
 drupal_site_name: "DrupalCamp Pune"
 drupal_install_profile: standard
-drupal_enable_modules: []
+drupal_enable_modules: ['admin_toolbar', 'admin_toolbar_tools', 'pathauto', 'redirect']
 drupal_account_name: admin
 drupal_account_pass: admin    
 

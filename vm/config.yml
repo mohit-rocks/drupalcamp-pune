@@ -36,10 +36,3 @@ firewall_log_dropped_packets: true
 apache_listen_port: "81"
 varnish_listen_port: "80"
 varnish_default_backend_port: "81"
-
-# Enable some modules by default.
-drupal_enable_modules:
-  - admin_toolbar
-  - admin_toolbar_tools
-  - pathauto
-  - redirect
