@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bcf714f6220fe67b8114f4ed89d7e5d",
+    "content-hash": "3891283637b2ebccf21a986e63596325",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5374,6 +5374,45 @@
                 "scraper"
             ],
             "time": "2017-01-03T13:21:43+00:00"
+        },
+        {
+            "name": "geerlingguy/drupal-vm",
+            "version": "4.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geerlingguy/drupal-vm.git",
+                "reference": "f04cf99e94eb2d23cd0e972c985c82947d5aba19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geerlingguy/drupal-vm/zipball/f04cf99e94eb2d23cd0e972c985c82947d5aba19",
+                "reference": "f04cf99e94eb2d23cd0e972c985c82947d5aba19",
+                "shasum": ""
+            },
+            "type": "vm",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeff Geerling",
+                    "homepage": "http://www.jeffgeerling.com"
+                },
+                {
+                    "name": "Oskar Schöldström",
+                    "homepage": "http://oxy.fi"
+                }
+            ],
+            "description": "A VM for local Drupal development, built with Vagrant + Ansible",
+            "homepage": "https://www.drupalvm.com",
+            "keywords": [
+                "drupal",
+                "vagrant",
+                "virtual machine",
+                "vm"
+            ],
+            "time": "2017-06-29T03:33:03+00:00"
         },
         {
             "name": "jcalderonzumba/gastonjs",
