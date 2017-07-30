@@ -1,13 +1,64 @@
 ---
+# Local Vagrant options.
+vagrant_hostname: local.drupalcamppune.dev
+vagrant_machine_name: drupalcamppune
+vagrant_ip: 192.168.88.22
+
+# Configure the synced folder.
+vagrant_synced_folders:
+  - local_path: .
+    destination: /var/www/drupal
+    type: nfs
+
+# Ensure vagrant plugins are installed.
+vagrant_plugins:
+  - name: vagrant-vbguest
+  - name: vagrant-hostsupdater
+
 # Composer project settings.
 drupal_build_composer_project: false
 drupal_build_composer: false
 drupal_composer_dependencies: []
 
-# Drupal install settings.
-drupal_site_name: "DrupalCamp Pune Website"
-drupal_core_path: "/var/www/drupal/web"
+# Minimum required versions.
+drupalvm_vagrant_version_min: '1.8.6'
+drupalvm_ansible_version_min: '2.2'  
+
+# Set this to 'false' if you don't need to install drupal (using the drupal_*
+# settings below), but instead copy down a database (e.g. using drush sql-sync).
 drupal_install_site: true
+
+# Settings for installing a Drupal site if 'install_site:' is 'true'.
+drupal_major_version: 8
+drupal_domain: "{{ vagrant_hostname }}"
+drupal_site_name: "DrupalCamp Pune Website"
+drupal_install_profile: standard
+drupal_enable_modules: ['admin_toolbar', 'admin_toolbar_tools', 'pathauto', 'redirect']
+drupal_account_name: admin
+drupal_account_pass: admin
+drupal_core_path: "/var/www/drupal/web"
+
+drupal_db_password: drupal
+mysql_root_password: root
+
+php_sendmail_path: "/opt/mailhog/mhsendmail"
+
+dashboard_install_dir: /var/www/dashboard
+extra_security_enabled: false
+
+firewall_allowed_tcp_ports:
+  - "22"
+  - "25"
+  - "80"
+  - "81"
+  - "443"
+  - "8025"
+firewall_log_dropped_packets: false
+
+# Set Apache to listen on port 80, and Varnish on 81.
+apache_listen_port: "80"
+varnish_listen_port: "81"
+varnish_default_backend_port: "80"
 
 drupalvm_cron_jobs:
   - name: "Drupal Cron"
@@ -16,23 +67,15 @@ drupalvm_cron_jobs:
 
 # Other overrides.
 php_version: "7.1"
-php_sendmail_path: "/usr/sbin/sendmail -t -i"
 installed_extras:
   - drush
   - varnish
+  #- mailhog
+  #- adminer
+  #- drupalconsole
+  #- xdebug
+  #- xhprof
+  #- selenium
 
 # Other secure defaults.
-dashboard_install_dir: ''
 apache_packages_state: installed
-
-# Restrict the firewall to only ports that are required for external services.
-firewall_allowed_tcp_ports:
-  - "22"
-  - "80"
-  - "443"
-firewall_log_dropped_packets: true
-
-# Set Apache to listen on port 81 (internal only), and Varnish on 80.
-apache_listen_port: "81"
-varnish_listen_port: "80"
-varnish_default_backend_port: "81"
